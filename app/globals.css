@@ -1,0 +1,256 @@
+:root {
+  --background: #02030a;
+  --foreground: #e9f6ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(80, 140, 255, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(180, 70, 255, 0.2), transparent 38%),
+    radial-gradient(circle at 50% 85%, rgba(0, 210, 255, 0.14), transparent 40%),
+    #02030a;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation: deepSpaceShift 18s ease-in-out infinite alternate;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.cosmos-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.cosmos-page::before,
+.cosmos-page::after {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cosmos-page::before {
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.75), transparent 55%),
+    radial-gradient(1.5px 1.5px at 80% 70%, rgba(180, 210, 255, 0.65), transparent 60%),
+    radial-gradient(1.5px 1.5px at 45% 10%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(1.5px 1.5px at 35% 85%, rgba(165, 235, 255, 0.75), transparent 60%),
+    radial-gradient(1.5px 1.5px at 70% 40%, rgba(255, 255, 255, 0.7), transparent 60%);
+  animation: starsOrbit 34s linear infinite;
+  opacity: 0.95;
+}
+
+.cosmos-page::after {
+  background:
+    conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(57, 95, 255, 0.2),
+      rgba(150, 58, 255, 0.24),
+      rgba(31, 221, 255, 0.18),
+      rgba(57, 95, 255, 0.2)
+    );
+  filter: blur(85px);
+  animation: nebulaPulse 9s ease-in-out infinite;
+  opacity: 0.82;
+}
+
+.liquid-title {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(5.5rem, 20vw, 12rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-family: "Orbitron", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  background: linear-gradient(
+    120deg,
+    #78f3ff 0%,
+    #d8f1ff 22%,
+    #8de4ff 45%,
+    #94a5ff 66%,
+    #cd7cff 100%
+  );
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 28px rgba(128, 190, 255, 0.28);
+  animation: liquidFlow 6s ease-in-out infinite;
+}
+
+.tech-button {
+  position: relative;
+  z-index: 2;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  border: 1px solid rgba(123, 228, 255, 0.62);
+  color: #d9f3ff;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(188, 245, 255, 0.45), transparent 42%),
+    radial-gradient(circle at 66% 70%, rgba(80, 138, 255, 0.42), transparent 45%),
+    rgba(8, 15, 35, 0.72);
+  box-shadow:
+    0 0 0 1px rgba(135, 232, 255, 0.2) inset,
+    0 0 18px rgba(64, 141, 255, 0.35),
+    0 0 44px rgba(94, 52, 255, 0.33);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.tech-button:hover {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.1);
+  box-shadow:
+    0 0 0 1px rgba(154, 243, 255, 0.35) inset,
+    0 0 24px rgba(52, 194, 255, 0.45),
+    0 0 56px rgba(101, 78, 255, 0.42);
+}
+
+.tech-button:active {
+  transform: scale(0.98);
+}
+
+.eyes-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(2rem, 7vw, 7rem);
+  padding-top: clamp(18rem, 28vh, 22rem);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.giant-eye {
+  width: clamp(220px, 30vw, 420px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95), rgba(222, 243, 255, 0.95) 48%, rgba(145, 195, 255, 0.6) 72%, rgba(34, 50, 105, 0.35) 100%);
+  border: 2px solid rgba(158, 224, 255, 0.45);
+  box-shadow:
+    0 0 50px rgba(72, 142, 255, 0.35),
+    0 0 120px rgba(86, 52, 226, 0.25),
+    inset 0 0 48px rgba(88, 118, 222, 0.3);
+  display: grid;
+  place-items: center;
+}
+
+
+.pupil {
+  width: clamp(74px, 10vw, 132px);
+  aspect-ratio: 1 / 1;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(145, 241, 255, 0.95), rgba(78, 155, 255, 0.9) 32%, rgba(24, 30, 60, 0.98) 70%);
+  border: 1px solid rgba(162, 239, 255, 0.5);
+  box-shadow:
+    0 0 22px rgba(101, 216, 255, 0.58),
+    inset 0 0 26px rgba(51, 135, 255, 0.35);
+  transition: transform 0.04s linear;
+  clip-path: polygon(
+    50% 0%,
+    85% 15%,
+    100% 50%,
+    85% 85%,
+    50% 100%,
+    15% 85%,
+    0% 50%,
+    15% 15%
+  );
+}
+
+@keyframes deepSpaceShift {
+  0% {
+    background-position: 0% 50%, 100% 20%, 40% 100%;
+  }
+  100% {
+    background-position: 100% 40%, 0% 70%, 70% 0%;
+  }
+}
+
+@keyframes starsOrbit {
+  0% {
+    transform: rotate(0deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.03);
+  }
+}
+
+@keyframes nebulaPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.62;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.92;
+  }
+}
+
+@keyframes liquidFlow {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(22deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
